@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JQuery_Assignment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        #container {
+            background-color: cadetblue;
+            margin: 100px;
+            margin-top: 50px;
+            margin-top: 0px;
+            padding: 100px;
+            padding-top: 20px;
+        }
+
+        header {
+            background-color: peru;
+            margin-left: 100px;
+            margin-right: 100px;
+            padding: 50px;
+        }
+
+        h2 {
+            color: darkred;
+            text-decoration: double;
+        }
+
+        p {
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <header><div><h1>JQuery Assignment</h1></div></header>
+        <div id="container">
+            <div id="exc1">
+                <!--************************    EXERCISE 1   ************************-->
+                <h2>EXERCISE 1 : Change Listener</h2>
+
+                <form> <input type="text" id="inputexc1" placeholder="Type message"></form>
+
+                <!-- Empty element for the message -->
+                <div id="Appended_message"></div>
+
+
+                <script>
+                    $(document).ready(function () {
+                        // Dont know why not able to type in the input field
+                        $('#inputexc1').on('change', function () {
+                            // Get the value of the input field
+                            var inputValue = $('#inputexc1').val();
+
+                            // Create a paragraph element with the message
+                            var messageParagraph = $('<p>').text('Input field value changed to: ' + inputValue);
+
+                            // Append the paragraph to the empty element
+                            $('#Appended_message').append(messageParagraph);
+                        });
+                    });
+                </script>
+
+                <!--<form>
+        <input  type="text" id="exc1Input" value="Text to append " placeholder="">
+    </form>
+    <p id="message1"> </p>
+    <script>
+        $(document).ready(function () {
+            $('#exc1Input').change(function () {
+                $('#message1').append(" " + $(#exc1Input).val());
+            });
+        });
+    </script>-->
+
+            </div>
+            <br /><br />
+            <div id="exc2">
+                <!--************************    EXERCISE 2   ************************-->
+                <h2>EXERCISE 2 : Show / Hide</h2>
+                <button id="hideBtn2">Hide</button>
+                <button id="showBtn2">Show</button>
+                <button id="toggleBtn2">Toggle</button>
+                <p id="hideMe">This element will hide/show/toggle when buttons are clicked.</p>
+
+                <script>
+                    $(document).ready(function () {
+                        $('#hideBtn2').click(function () {
+                            $('#hideMe').hide();
+                        });
+                        $('#showBtn2').click(function () {
+                            $('#hideMe').show();
+                        });
+                        $('#toggleBtn2').click(function () {
+                            $('#hideMe').toggle();
+                        });
+                    });
+                </script>
+            </div>
+            <br /><br />
+            <div id="exc3">
+                <!--************************    EXERCISE 3   ************************-->
+
+                <h2>EXERCISE 3 : Show / Hide</h2>
+                <button id="addBtn3">Add Style</button>
+                <button id="removeBtn3">Remove Style</button>
+                <button id="toggleBtn3">Toggle Style</button>
+                <p id="styledElement">This element will have its style changed when buttons are clicked.</p>
+
+                <script>
+                    $(document).ready(function () {
+                        $('#addBtn3').click(function () {
+                            $('#styledElement').css('color', 'blue');
+                        });
+                        $('#removeBtn3').click(function () {
+                            $('#styledElement').css('color', '');
+                        });
+                        $('#toggleBtn3').click(function () {
+                         $('#styledElement').toggleClass('highlight');
+                           
+                        });
+                    });
+                </script>
+                <style>
+                    .highlight {
+                        background-color: yellow;
+                    }
+                </style>
+            </div>
+            <br /><br />
+            <div id="exc4">
+                <!-- ************************ EXERCISE 4 ************************ -->
+
+                <h2>EXERCISE 4 : Key Press Listener</h2>
+                <p id="keyDisplay">Press any key...</p>
+
+                <script>
+                    $(document).ready(function () {
+                        $(document).keydown(function (event) {
+                            // It listening the key from whole page, not only in given paraghraph with id.
+                            $('#keyDisplay').text('Key pressed: ' + event.key);
+                            return false; 
+                        });
+                    });
+                </script>
+            </div>
+            <br /><br />
+            <div id="exc5">
+                <!-- ************************ EXERCISE 5 ************************ -->
+
+                <h2>EXERCISE 5 : Focus Events</h2>
+                <div id="focusElement">
+                    <input type="text" placeholder="Click here to focus">
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+                        $('#focusElement').focusin(function () {
+                            $(this).css('background-color', 'lightblue');
+                        });
+                        $('#focusElement').focusout(function () {
+                            $(this).css('background-color', '');
+                        });
+                    });
+                </script>
+            </div>
+            <br /><br />
+            <div id="exc6">
+                <!-- ************************ EXERCISE 6 ************************ -->
+
+                <h2>EXERCISE 6 : Fading</h2>
+                <p id="fadeElement">Click me to fade in/out.</p>
+
+                <script>
+                    $(document).ready(function () {
+                        $('#fadeElement').click(function () {
+                            $(this).fadeOut().delay(500).fadeIn();
+                        });
+                    });
+                </script>
+            </div>
+            <br /><br />
+            <div id="exc7">
+                <!-- ************************ EXERCISE 7 ************************ -->
+                <h2>EXERCISE 7 : Animation - Fading</h2>
+                <div class="fadeElement">Item 1</div>
+                <div class="fadeElement">Item 2</div>
+                <div class="fadeElement">Item 3</div>
+
+                <script>
+                    $(document).ready(function () {
+                        $('.fadeElement').hover(function () {
+                            $(this).fadeIn();
+                        }, function () {
+                            $(this).fadeOut();
+                        });
+                    });
+                </script>
+                <style>
+                    .fadeElement {
+                       /* display: none;*/
+                        background-color:darkgoldenrod;
+                    }
+                </style>
+            </div>
+            <br /><br />
+            <div id="exc8">
+                <!-- ************************ EXERCISE 8 ************************ -->
+
+                <h2>EXERCISE 8 : Animation - Movement</h2>
+                <div id="menu">
+                    <h1>Menu</h1>
+                    <ul>
+                        <li>
+                            <div class="dropdown">
+                                <button type="button" id="dropdownBtn" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" >
+                                    C#
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Array</a></li>
+                                    <li><a class="dropdown-item" href="#">Method</a></li>
+                                    <li><a class="dropdown-item" href="#">OOP</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Bootstrap</a></li>
+                    </ul>
+                </div>
+               
+
+                <script>
+                    $(document).ready(function () {
+                        $('#menu').mouseleave(function () {
+                            $(this).animate({ left: '-100%' });
+                        });
+                        $(window).mousemove(function (e) {
+                            if (e.clientX <= 10) {
+                                $('#menu').animate({ left: 0 });
+                            }
+                        });
+                    });
+                </script>
+                <style>
+                    /*body {
+                        margin: 0;
+                        padding: 0;
+                    }*/
+                    #dropdownBtn {
+                        background-color: peru;
+                        border:none;
+                    }
+                   
+
+                    #menu, .dropdown-menu {
+                        position: fixed;
+                        border-left:solid 2px peru;
+                        top: 0;
+                        left: 50px;
+                        width: 135px;
+                        height: 100vh;
+                        /* background: #333;*/
+                        background-color: peru;
+                        color: white;
+                        padding: 20px;
+                    }
+                    li a{
+                        text-decoration:none;
+                        color:white;
+                    }
+                </style>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
